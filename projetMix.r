@@ -16,11 +16,11 @@ source(file="util.r")
 #################################################################################################################################
 # Import des 5 matlab fichiers
 
-mat_usps=R.matlab::readMat("Data//USPS.mat")
-mat_optdigits = R.matlab::readMat("Data//Optdigits.mat")
-mat_jaffe = R.matlab::readMat("Data//jaffe.mat")
-mat_MFEAT1 = R.matlab::readMat("Data//MFEAT1.mat")
-mat_MNIST5 = R.matlab::readMat("Data//MNIST5.mat")
+mat_usps=R.matlab::readMat("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/USPS.mat")
+mat_optdigits = R.matlab::readMat("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/Optdigits.mat")
+mat_jaffe = R.matlab::readMat("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/jaffe.mat")
+mat_MFEAT1 = R.matlab::readMat("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/MFEAT1.mat")
+mat_MNIST5 = R.matlab::readMat("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/MNIST5.mat")
 
 #################################################################################################################################
 #  Conversion matrice des différents jeux de données ainsi qu'une mise à l'échelle [0,1]
@@ -132,11 +132,11 @@ res.tsne_analyse.jaffe = tsne_analyse(mat_jaffe,mat_jaffe_X,"JAFFE",perplexity =
 # Chargement des objet pré-calculer pour des nombres de cluster allant de 8 à 12 acp à false 
 # five_cluster_method(X,min_nc=8,max_nc=12,acp=FALSE)
 
-fcm_normal_optdigits = readRDS("Data//fcm_normal_optdigits.rds")
-fcm_normal_jaffe = readRDS("Data//fcm_normal_jaffe.rds")
-fcm_normal_mfeat1 = readRDS("Data//fcm_normal_mfeat1.rds")
-fcm_normal_mnist5 = readRDS("Data//fcm_normal_mnist5.rds")
-fcm_normal_usps = readRDS("Data//fcm_normal_usps.rds")
+fcm_normal_optdigits = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_optdigits.rds")
+fcm_normal_jaffe = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_jaffe.rds")
+fcm_normal_mfeat1 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_mfeat1.rds")
+fcm_normal_mnist5 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_mnist5.rds")
+fcm_normal_usps = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_usps.rds")
 
 #################################################################################################################################
 # Clustering avec les 5 méthodes (kmeans,cah ward, cah average, cah complete, cah single).
@@ -144,11 +144,11 @@ fcm_normal_usps = readRDS("Data//fcm_normal_usps.rds")
 # five_cluster_method(X,min_nc=8,max_nc=12,acp=TRUE)
 # Chargement des objets pour des k allant de 8 à 12
 
-fcm_normal_optdigits_pca = readRDS("Data//fcm_normal_optdigits_pca.rds")
-fcm_normal_jaffe_pca = readRDS("Data//fcm_normal_jaffe_pca.rds")
-fcm_normal_mfeat1_pca = readRDS("Data//fcm_normal_mfeat1_pca.rds")
-fcm_normal_mnist5_pca = readRDS("Data//fcm_normal_mnist5_pca.rds")
-fcm_normal_usps_pca = readRDS("Data//fcm_normal_usps_pca.rds")
+fcm_normal_optdigits_pca = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_optdigits_pca.rds")
+fcm_normal_jaffe_pca = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_jaffe_pca.rds")
+fcm_normal_mfeat1_pca = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_mfeat1_pca.rds")
+fcm_normal_mnist5_pca = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_mnist5_pca.rds")
+fcm_normal_usps_pca = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/fcm_normal_usps_pca.rds")
 
 fcm_normal_usps_pca$kmeans$Best.nc
 fcm_normal_usps_pca$cah_complete$Best.nc
@@ -173,11 +173,11 @@ gac_usps = get_result_clustering(res.normal,truth_partition$usps,"USPS")
 # Avec le jeu de données initiales, seul le package mclust a était utilisé à cause d'un memory leak de la part de rmixmod 
 # lorsque l'on donne un intervalle de classe avec un jeu de donnée.
 
-mm_jaffe = readRDS("Data//mm_jaffe.rds")
-mm_mnist5 = readRDS("Data//mm_MNIST5.rds")
-mm_optdigits = readRDS("Data//mm_optdigits.rds")
-mm_usps = readRDS("Data//mm_usps.rds")
-mm_mfeat1 = readRDS("Data//mm_MFEAT1.rds")
+mm_jaffe = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_jaffe.rds")
+mm_mnist5 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_MNIST5.rds")
+mm_optdigits = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_optdigits.rds")
+mm_usps = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_usps.rds")
+mm_mfeat1 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_MFEAT1.rds")
 
 plot(mm_jaffe$mclust$BIC)
 plot(mm_mnist5$mclust$BIC)
@@ -189,11 +189,11 @@ plot(mm_mfeat1$mclust$BIC)
 # Modèle de mélanges avec les packages mclust et rmixmod pour chaque jeu de données
 # Avec le jeu de données ayant subi une ACP, on donne en entrée les deux composantes principales.
 
-mm_jaffe_pca_10 =  readRDS("Data//mm_jaffe_pca.rds")
-mm_MFEAT1_pca_10 = readRDS("Data//mm_MFEAT1_pca.rds")
-mm_MNIST5_pca_10 = readRDS("Data//mm_MNIST5_pca.rds")
-mm_optdigits_pca_10 = readRDS("Data//mm_optdigits_pca.rds")
-mm_usps_pca_10 = readRDS("Data//mm_usps_pca.rds")
+mm_jaffe_pca_10 =  readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_jaffe_pca.rds")
+mm_MFEAT1_pca_10 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_MFEAT1_pca.rds")
+mm_MNIST5_pca_10 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_MNIST5_pca.rds")
+mm_optdigits_pca_10 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_optdigits_pca.rds")
+mm_usps_pca_10 = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mm_usps_pca.rds")
 
 # Plot pour la séléction du modèle avec le critère BIC (package mclust)
 plot(mm_jaffe_pca_10$mclust$BIC)
@@ -314,4 +314,4 @@ res_final_usps_autoencoder_mclust = get_result_mm_mclust(mm_usps_10_autoencoder,
 #################################################################################################################################
 # EMMIX 
 
-mfa_jaffe = readRDS("Data//mfa_jaffe.rds")
+mfa_jaffe = readRDS("https://github.com/mbenhamd/mixtore-model-images/blob/master/Data/mfa_jaffe.rds")
