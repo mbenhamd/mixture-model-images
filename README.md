@@ -1,1 +1,1 @@
-# mixtore-model-images
+# mixture-model-images
