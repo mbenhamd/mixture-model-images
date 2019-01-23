@@ -1,7 +1,7 @@
 #################################################################################################################################
-                                            #Projet de Modèle de mélange
+                                            #Projet de Modï¿½le de mï¿½lange
 #################################################################################################################################
-# Affiche les titres de manière centré dans un notebook
+# Affiche les titres de maniï¿½re centrï¿½ dans un notebook
 IRdisplay::display_html("
 <style>
 h1,h2,h3,h4,h5,h6 {
@@ -10,24 +10,24 @@ text-align:center
 </style>
 ")
 
-# Script contenant les différents fonction utiles aux questions, permet d'appliquer les tâches répétitives aux 5 différents dataset
+# Script contenant les diffï¿½rents fonction utiles aux questions, permet d'appliquer les tï¿½ches rï¿½pï¿½titives aux 5 diffï¿½rents dataset
 source(file="util.r")
 
 #################################################################################################################################
 # Import des 5 matlab fichiers
 
-mat_usps=R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/USPS.mat")
-mat_optdigits = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/Optdigits.mat")
-mat_jaffe = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/jaffe.mat")
-mat_MFEAT1 = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MFEAT1.mat")
-mat_MNIST5 = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MNIST5.mat")
+mat_usps=R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/USPS.mat?raw=true")
+mat_optdigits = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/Optdigits.mat?raw=true")
+mat_jaffe = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/jaffe.mat?raw=true")
+mat_MFEAT1 = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MFEAT1.mat?raw=true")
+mat_MNIST5 = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MNIST5.mat?raw=true")
 
 #################################################################################################################################
-#  Conversion matrice des différents jeux de données ainsi qu'une mise à l'échelle [0,1]
+#  Conversion matrice des diffï¿½rents jeux de donnï¿½es ainsi qu'une mise ï¿½ l'ï¿½chelle [0,1]
 
 
 #################################################################################################################################
-# Création d'une liste contenant les vraies partitions de chaque jeux de données afin de faciliter les comparaison
+# Crï¿½ation d'une liste contenant les vraies partitions de chaque jeux de donnï¿½es afin de faciliter les comparaison
 
 truth_partition = list()
 truth_partition$jaffe = mat_jaffe$y 
@@ -55,7 +55,7 @@ mat_usps$y %>% table()
 mat_optdigits$y %>% table()
 
 #################################################################################################################################
-# Affichage de 10 images contenu dans le jeu de données
+# Affichage de 10 images contenu dans le jeu de donnï¿½es
 
 show_images(mat_MNIST5_X,1,10)
 show_images(mat_MFEAT1_X,1,10)
@@ -65,7 +65,7 @@ show_images(mat_optdigits_X,1,10)
 
 
 #################################################################################################################################
-# Calcul de sparsité pour chaque jeu de données
+# Calcul de sparsitï¿½ pour chaque jeu de donnï¿½es
 
 sparsity(mat_jaffe_X)*100
 sparsity(mat_MFEAT1_X)*100
@@ -102,14 +102,14 @@ plot(res.pca_analyse.usps$eig)
 plot(res.pca_analyse.jaffe$eig)
 
 #################################################################################################################################
-# Visualisation des différents jeu de données avec ISOMAP initilisé avec une ACP à 30 dimension et 10 voisins
+# Visualisation des diffï¿½rents jeu de donnï¿½es avec ISOMAP initilisï¿½ avec une ACP ï¿½ 30 dimension et 10 voisins
 # Il a fallu une dizaine d'heures pour pouvoir calculer ces 5 variables.
 
-isomap_MNIST5_pca = readRDS("Data//isomap_MNIST5_pca.rds")
-isomap_optdigits_pca = readRDS("Data//isomap_MNIST5_pca.rds")
-isomap_usps_pca = readRDS("Data//isomap_usps_pca.rds")
-isomap_MFEAT1_pca = readRDS("Data//isomap_MFEAT1_pca.rds")
-isomap_jaffe_pca = readRDS("Data//isomap_jaffe_pca.rds")
+isomap_MNIST5_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/isomap_MNIST5_pca.rds?raw=true")
+isomap_optdigits_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/isomap_MNIST5_pca.rds?raw=true")
+isomap_usps_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/isomap_usps_pca.rds?raw=true")
+isomap_MFEAT1_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/isomap_MFEAT1_pca.rds?raw=true")
+isomap_jaffe_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/isomap_jaffe_pca.rds?raw=true")
 
 isomap_visualisation(mat_optdigits,x = isomap_optdigits_pca$data_isomap_d,name="OPTIDIGITS")
 isomap_visualisation(mat_MNIST5,x = isomap_MNIST5_pca$data_isomap_d,name="MNIST5")
@@ -118,7 +118,7 @@ isomap_visualisation(mat_usps,x = isomap_usps_pca$data_isomap_d,name="USPS")
 isomap_visualisation(mat_jaffe,x = isomap_jaffe_pca$data_isomap_d,name="JAFFE")
 
 #################################################################################################################################
-# Visualisation avec t-SNE sur les données d'origines
+# Visualisation avec t-SNE sur les donnï¿½es d'origines
 
 res.tsne_analyse.optidigits = tsne_analyse(mat_optdigits,mat_optdigits_X,"OPTIDIGITS",perplexity =10,theta=0.5)
 res.tsne_analyse.mnist5 = tsne_analyse(mat_MNIST5,mat_MNIST5_X,"MNIST5",perplexity =50,theta=0.9)
@@ -127,28 +127,28 @@ res.tsne_analyse.usps = tsne_analyse(mat_usps,mat_usps_X,"USPS",perplexity =10,t
 res.tsne_analyse.jaffe = tsne_analyse(mat_jaffe,mat_jaffe_X,"JAFFE",perplexity =10,theta=0.9)
 
 #################################################################################################################################
-# Clustering avec les 5 méthodes (kmeans,cah ward, cah average, cah complete, cah single).
-# Jeu de données initiales, critère de silouette.
-# Chargement des objet pré-calculer pour des nombres de cluster allant de 8 à 12 acp à false 
+# Clustering avec les 5 mï¿½thodes (kmeans,cah ward, cah average, cah complete, cah single).
+# Jeu de donnï¿½es initiales, critï¿½re de silouette.
+# Chargement des objet prï¿½-calculer pour des nombres de cluster allant de 8 ï¿½ 12 acp ï¿½ false 
 # five_cluster_method(X,min_nc=8,max_nc=12,acp=FALSE)
 
-fcm_normal_optdigits = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_optdigits.rds")
-fcm_normal_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_jaffe.rds")
-fcm_normal_mfeat1 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mfeat1.rds")
-fcm_normal_mnist5 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mnist5.rds")
-fcm_normal_usps = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_usps.rds")
+fcm_normal_optdigits = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_optdigits.rds?raw=true")
+fcm_normal_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_jaffe.rds?raw=true")
+fcm_normal_mfeat1 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mfeat1.rds?raw=true")
+fcm_normal_mnist5 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mnist5.rds?raw=true")
+fcm_normal_usps = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_usps.rds?raw=true")
 
 #################################################################################################################################
-# Clustering avec les 5 méthodes (kmeans,cah ward, cah average, cah complete, cah single).
-# Jeu de données avec subi une ACP et initialisation avec les deux premières composantes principales, critère de silouette.
+# Clustering avec les 5 mï¿½thodes (kmeans,cah ward, cah average, cah complete, cah single).
+# Jeu de donnï¿½es avec subi une ACP et initialisation avec les deux premiï¿½res composantes principales, critï¿½re de silouette.
 # five_cluster_method(X,min_nc=8,max_nc=12,acp=TRUE)
-# Chargement des objets pour des k allant de 8 à 12
+# Chargement des objets pour des k allant de 8 ï¿½ 12
 
-fcm_normal_optdigits_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_optdigits_pca.rds")
-fcm_normal_jaffe_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_jaffe_pca.rds")
-fcm_normal_mfeat1_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mfeat1_pca.rds")
-fcm_normal_mnist5_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mnist5_pca.rds")
-fcm_normal_usps_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_usps_pca.rds")
+fcm_normal_optdigits_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_optdigits_pca.rds?raw=true")
+fcm_normal_jaffe_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_jaffe_pca.rds?raw=true")
+fcm_normal_mfeat1_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mfeat1_pca.rds?raw=true")
+fcm_normal_mnist5_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_mnist5_pca.rds?raw=true")
+fcm_normal_usps_pca = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/fcm_normal_usps_pca.rds?raw=true")
 
 fcm_normal_usps_pca$kmeans$Best.nc
 fcm_normal_usps_pca$cah_complete$Best.nc
@@ -160,7 +160,7 @@ fcm_normal_usps_pca$cah_average$Best.nc
 
 
 #################################################################################################################################
-# Comparaisons des partitions avec 5 méthodes suivants une initialisation ou non avec une ACP
+# Comparaisons des partitions avec 5 mï¿½thodes suivants une initialisation ou non avec une ACP
 
 gac_optdigits = get_result_clustering(mat_optdigits_X,truth_partition$optdigits,"OPTDIGITS")
 gac_jaffe = get_result_clustering(mat_jaffe_X,truth_partition$jaffe,"JAFFE")
@@ -169,15 +169,15 @@ gac_mnist5 = get_result_clustering(mat_MNIST5_X,truth_partition$mnist5,"MNIST5")
 gac_usps = get_result_clustering(res.normal,truth_partition$usps,"USPS")
 
 #################################################################################################################################
-# Modèle de mélanges avec les packages mclust et rmixmod pour chaque jeu de données
-# Avec le jeu de données initiales, seul le package mclust a était utilisé à cause d'un memory leak de la part de rmixmod 
-# lorsque l'on donne un intervalle de classe avec un jeu de donnée.
+# Modï¿½le de mï¿½langes avec les packages mclust et rmixmod pour chaque jeu de donnï¿½es
+# Avec le jeu de donnï¿½es initiales, seul le package mclust a ï¿½tait utilisï¿½ ï¿½ cause d'un memory leak de la part de rmixmod 
+# lorsque l'on donne un intervalle de classe avec un jeu de donnï¿½e.
 
-mm_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_jaffe.rds")
-mm_mnist5 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MNIST5.rds")
-mm_optdigits = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_optdigits.rds")
-mm_usps = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_usps.rds")
-mm_mfeat1 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MFEAT1.rds")
+mm_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_jaffe.rds?raw=true")
+mm_mnist5 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MNIST5.rds?raw=true")
+mm_optdigits = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_optdigits.rds?raw=true")
+mm_usps = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_usps.rds?raw=true")
+mm_mfeat1 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MFEAT1.rds?raw=true")
 
 plot(mm_jaffe$mclust$BIC)
 plot(mm_mnist5$mclust$BIC)
@@ -186,30 +186,30 @@ plot(mm_usps$mclust$BIC)
 plot(mm_mfeat1$mclust$BIC)
 
 #################################################################################################################################
-# Modèle de mélanges avec les packages mclust et rmixmod pour chaque jeu de données
-# Avec le jeu de données ayant subi une ACP, on donne en entrée les deux composantes principales.
+# Modï¿½le de mï¿½langes avec les packages mclust et rmixmod pour chaque jeu de donnï¿½es
+# Avec le jeu de donnï¿½es ayant subi une ACP, on donne en entrï¿½e les deux composantes principales.
 
-mm_jaffe_pca_10 =  readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_jaffe_pca.rds")
-mm_MFEAT1_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MFEAT1_pca.rds")
-mm_MNIST5_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MNIST5_pca.rds")
-mm_optdigits_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_optdigits_pca.rds")
-mm_usps_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_usps_pca.rds")
+mm_jaffe_pca_10 =  readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_jaffe_pca.rds?raw=true")
+mm_MFEAT1_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MFEAT1_pca.rds?raw=true")
+mm_MNIST5_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_MNIST5_pca.rds?raw=true")
+mm_optdigits_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_optdigits_pca.rds?raw=true")
+mm_usps_pca_10 = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mm_usps_pca.rds?raw=true")
 
-# Plot pour la séléction du modèle avec le critère BIC (package mclust)
+# Plot pour la sï¿½lï¿½ction du modï¿½le avec le critï¿½re BIC (package mclust)
 plot(mm_jaffe_pca_10$mclust$BIC)
 plot(mm_MFEAT1_pca_10$mclust$BIC)
 plot(mm_MNIST5_pca_10$mclust$BIC)
 plot(mm_optdigits_pca_10$mclust$BIC)
 plot(mm_usps_pca_10$mclust$BIC)
 
-# Print pour la séléction du modèle avec le package mclust
+# Print pour la sï¿½lï¿½ction du modï¿½le avec le package mclust
 print(paste("JAFFE",mm_jaffe_pca_10$mclust$modelName,mm_jaffe_pca_10$mclust$G))
 print(paste("MFEAT",mm_MFEAT1_pca_10$mclust$modelName,mm_MFEAT1_pca_10$mclust$G))
 print(paste("MNIST",mm_MNIST5_pca_10$mclust$modelName,mm_MNIST5_pca_10$mclust$G))
 print(paste("OPTDIGITS",mm_optdigits_pca_10$mclust$modelName,mm_optdigits_pca_10$mclust$G))
 print(paste("USPS",mm_usps_pca_10$mclust$modelName,mm_usps_pca_10$mclust$G))
 
-# Pint pour la séléction du modèle avec le package mixmod
+# Pint pour la sï¿½lï¿½ction du modï¿½le avec le package mixmod
 print(paste("JAFFE",mm_jaffe_pca_10$mixmodClust@bestResult@nbCluster,mm_jaffe_pca_10$mixmodClust@bestResult@model))
 print(paste("MFEAT",mm_MFEAT1_pca_10$mixmodClust@bestResult@nbCluster,mm_MFEAT1_pca_10$mixmodClust@bestResult@model))
 print(paste("MNIST",mm_MNIST5_pca_10$mixmodClust@bestResult@nbCluster,mm_MNIST5_pca_10$mixmodClust@bestResult@model))
@@ -227,7 +227,7 @@ plot(MclustDR(mm_optdigits$mclust))
 plot(MclustDR(mm_usps$mclust))
 
 #################################################################################################################################
-# Comparaison des résultats des modèles de mélanges provenant de mclust et rmixmod avec k = 10
+# Comparaison des rï¿½sultats des modï¿½les de mï¿½langes provenant de mclust et rmixmod avec k = 10
 
 # Calcul avec le vrai nombre de classe sur les deux partitions
 mma_jaffe = mixture_model_analyse(data_images = mat_jaffe_X,10,10)
@@ -236,7 +236,7 @@ mma_mnist = mixture_model_analyse(data_images = mat_MNIST5_X,10,10)
 mma_optdigits = mixture_model_analyse(data_images = mat_optdigits_X,10,10)
 mma_usps = mixture_model_analyse(data_images = mat_usps_X,10,10)
 
-# Résultat avec mclust
+# Rï¿½sultat avec mclust
 
 res_final_jaffe_mclust = get_result_mm_mclust(mma_jaffe,truth_partition$jaffe)
 res_final_mfeat1_mclust = get_result_mm_mclust(mma_mfeat,truth_partition$mfeat1)
@@ -244,7 +244,7 @@ res_final_optdigits_mclust = get_result_mm_mclust(mma_optdigits,truth_partition$
 res_final_mnist5_mclust = get_result_mm_mclust(mma_mnist,truth_partition$mnist5)
 res_final_usps_mclust = get_result_mm_mclust(mma_usps,truth_partition$usps)
 
-# Résultat avec mixmod
+# Rï¿½sultat avec mixmod
 
 res_final_jaffe_mixmod = get_result_mm_mixmod(mma_jaffe,truth_partition$jaffe)
 res_final_mfeat1_mixmod = get_result_mm_mixmod(mma_mfeat,truth_partition$mfeat1)
@@ -253,18 +253,18 @@ res_final_mnist5_mixmod = get_result_mm_mixmod(mma_mnist,truth_partition$mnist5)
 res_final_usps_mixmod = get_result_mm_mixmod(mma_usps,truth_partition$usps)
 
 #################################################################################################################################
-# On visualise les classes provenant des modèles de mélange grâce à la t-SNE
+# On visualise les classes provenant des modï¿½les de mï¿½lange grï¿½ce ï¿½ la t-SNE
 
-tsne_jaffe_mm = tsne_analyse_mm(original_dat = mat_jaffe,mat_dat = mma_jaffe$mixmodClust@data,mma_jaffe$mixmodClust@bestResult@partition,name_dataset = "jaffe modèle de mélange",perplexity = 10,theta = 0.9)
-tsne_mnist5_mm = tsne_analyse_mm(original_dat = mat_MNIST5,mma_mnist$mixmodClust@data,mma_mnist$mixmodClust@bestResult@partition,name_dataset = "mnist5 modèle de mélange",perplexity = 50,theta = 0.9)
-tsne_optdigits_mm = tsne_analyse_mm(original_dat = mat_optdigits,mma_optdigits$mixmodClust@data,mma_optdigits$mixmodClust@bestResult@partition,name_dataset = "optdigits modèle de mélange",perplexity = 50,theta = 0.9)
-tsne_usps_mm = tsne_analyse_mm(original_dat = mat_usps,mma_usps$mixmodClust@data,mma_usps$mixmodClust@bestResult@partition,name_dataset = "usps modèle de mélange",perplexity = 50,theta = 0.9)
-tsne_mfea_mm = tsne_analyse_mm(original_dat = mat_MFEAT1,mma_mfeat$mixmodClust@data,mma_mfeat$mixmodClust@bestResult@partition,name_dataset = "mfea modèle de mélange",perplexity = 60,theta = 0.9)
+tsne_jaffe_mm = tsne_analyse_mm(original_dat = mat_jaffe,mat_dat = mma_jaffe$mixmodClust@data,mma_jaffe$mixmodClust@bestResult@partition,name_dataset = "jaffe modï¿½le de mï¿½lange",perplexity = 10,theta = 0.9)
+tsne_mnist5_mm = tsne_analyse_mm(original_dat = mat_MNIST5,mma_mnist$mixmodClust@data,mma_mnist$mixmodClust@bestResult@partition,name_dataset = "mnist5 modï¿½le de mï¿½lange",perplexity = 50,theta = 0.9)
+tsne_optdigits_mm = tsne_analyse_mm(original_dat = mat_optdigits,mma_optdigits$mixmodClust@data,mma_optdigits$mixmodClust@bestResult@partition,name_dataset = "optdigits modï¿½le de mï¿½lange",perplexity = 50,theta = 0.9)
+tsne_usps_mm = tsne_analyse_mm(original_dat = mat_usps,mma_usps$mixmodClust@data,mma_usps$mixmodClust@bestResult@partition,name_dataset = "usps modï¿½le de mï¿½lange",perplexity = 50,theta = 0.9)
+tsne_mfea_mm = tsne_analyse_mm(original_dat = mat_MFEAT1,mma_mfeat$mixmodClust@data,mma_mfeat$mixmodClust@bestResult@partition,name_dataset = "mfea modï¿½le de mï¿½lange",perplexity = 60,theta = 0.9)
 
 #################################################################################################################################
-# On entraine sur les différents jeux de données les autoencodeurs   
-# Inutile de le relancer si des modèles sont déja pré-entrainer et mis dans le dossier afin de gagner du temps lors de la relecture du script
-# Un résumé de chaque paramètres
+# On entraine sur les diffï¿½rents jeux de donnï¿½es les autoencodeurs   
+# Inutile de le relancer si des modï¿½les sont dï¿½ja prï¿½-entrainer et mis dans le dossier afin de gagner du temps lors de la relecture du script
+# Un rï¿½sumï¿½ de chaque paramï¿½tres
 # train_jaffe = train_autoencoder(dataset = mat_jaffe_X,batch_size =32,epochs = 500,name_dataset = "jaffe")
 # train_mnist5 = train_autoencoder(dataset = mat_MNIST5_X,batch_size =32,epochs = 500,name_dataset = "mnist5")
 # train_optdigits = train_autoencoder(dataset = mat_optdigits_X,batch_size =32,epochs = 500,name_dataset = "optdigits")
@@ -278,7 +278,7 @@ train_usps = get_encoder_pretrain(dataset = mat_usps_X,name_dataset = "usps")
 train_mfea = get_encoder_pretrain(dataset = mat_MFEAT1_X,name_dataset = "mfea")
 
 #################################################################################################################################
-# On visualise les données encodées grâce à la t-SNE
+# On visualise les donnï¿½es encodï¿½es grï¿½ce ï¿½ la t-SNE
 
 tsne_jaffe = tsne_analyse(original_dat = mat_jaffe,mat_dat = visualize_autoencoded(train_jaffe$encoder_model,mat_jaffe_X),name_dataset = "jaffe",perplexity = 60,theta = 0.9)
 tsne_mnist5 = tsne_analyse(original_dat = mat_MNIST5,mat_dat = visualize_autoencoded(train_mnist5$encoder_model,mat_MNIST5_X),name_dataset = "mnist5")
@@ -287,7 +287,7 @@ tsne_usps = tsne_analyse(original_dat = mat_usps,mat_dat = visualize_autoencoded
 tsne_mfea = tsne_analyse(original_dat = mat_MFEAT1,mat_dat = visualize_autoencoded(train_mfea$encoder_model,mat_MFEAT1_X),name_dataset = "mfea")
 
 #################################################################################################################################
-# On entraine les modèles de mélanges sur les données encodées
+# On entraine les modï¿½les de mï¿½langes sur les donnï¿½es encodï¿½es
 
 mm_jaffe_10_autoencoder = mixture_model_analyse(visualize_autoencoded(train_jaffe$encoder_model,mat_jaffe_X) ,10,10)
 mm_MFEAT1_10_autoencoder = mixture_model_analyse(visualize_autoencoded(train_mfea$encoder_model,mat_MFEAT1_X) ,10,10)
@@ -295,7 +295,7 @@ mm_MNIST5_10_autoencoder = mixture_model_analyse(visualize_autoencoded(train_mni
 mm_optdigits_10_autoencoder = mixture_model_analyse(visualize_autoencoded(train_optdigits$encoder_model,mat_optdigits_X) ,10,10)
 mm_usps_10_autoencoder = mixture_model_analyse(visualize_autoencoded(train_usps$encoder_model,mat_usps_X) ,10,10)
 
-# On récupere les résultats pour le modèle de mélange calculer grâce à Rmixmod
+# On rï¿½cupere les rï¿½sultats pour le modï¿½le de mï¿½lange calculer grï¿½ce ï¿½ Rmixmod
 
 res_final_jaffe_autoencoder_mixmod = get_result_mm_mixmod(mm_jaffe_10_autoencoder,truth_partition$jaffe)
 res_final_mfeat1_autoencoder_mixmod = get_result_mm_mixmod(mm_MFEAT1_10_autoencoder,truth_partition$mfeat1)
@@ -303,7 +303,7 @@ res_final_optdigits_autoencoder_mixmod = get_result_mm_mixmod(mm_optdigits_10_au
 res_final_mnist5_autoencoder_mixmod = get_result_mm_mixmod(mm_MNIST5_10_autoencoder,truth_partition$mnist5)
 res_final_usps_autoencoder_mixmod = get_result_mm_mixmod(mm_usps_10_autoencoder,truth_partition$usps)
 
-# On récupere les résultats pour le modèle de mélange calculer grâce à mclust
+# On rï¿½cupere les rï¿½sultats pour le modï¿½le de mï¿½lange calculer grï¿½ce ï¿½ mclust
 
 res_final_jaffe_autoencoder_mclust = get_result_mm_mclust(mm_jaffe_10_autoencoder,truth_partition$jaffe)
 res_final_mfeat1_autoencoder_mclust = get_result_mm_mclust(mm_MFEAT1_10_autoencoder,truth_partition$mfeat1)
@@ -314,4 +314,4 @@ res_final_usps_autoencoder_mclust = get_result_mm_mclust(mm_usps_10_autoencoder,
 #################################################################################################################################
 # EMMIX 
 
-mfa_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mfa_jaffe.rds")
+mfa_jaffe = readRDS("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/mfa_jaffe.rds?raw=true")
