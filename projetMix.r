@@ -16,11 +16,11 @@ source(file="util.r")
 #################################################################################################################################
 # Import des 5 matlab fichiers
 
-mat_usps=R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/USPS.mat?raw=true")
-mat_optdigits = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/Optdigits.mat?raw=true")
-mat_jaffe = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/jaffe.mat?raw=true")
-mat_MFEAT1 = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MFEAT1.mat?raw=true")
-mat_MNIST5 = R.mat?raw=truelab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MNIST5.mat?raw=true")
+mat_usps=R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/USPS.mat?raw=true")
+mat_optdigits = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/Optdigits.mat?raw=true")
+mat_jaffe = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/jaffe.mat?raw=true")
+mat_MFEAT1 = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MFEAT1.mat?raw=true")
+mat_MNIST5 = R.matlab::readMat("https://github.com/mbenhamd/mixture-model-images/blob/master/Data/MNIST5.mat?raw=true")
 
 #################################################################################################################################
 #  Conversion matrice des diff�rents jeux de donn�es ainsi qu'une mise � l'�chelle [0,1]
